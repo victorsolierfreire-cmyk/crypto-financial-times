@@ -4,93 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Financial Times | Institutional Intelligence Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #f59e0b; --bg: #0b1120; --card: #161c2d; --text: #f8fafc; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
         
-        /* TICKER TAPE SUPERIOR */
-        .ticker-wrap { background: #000; border-bottom: 1px solid #1e293b; }
-
-        /* HEADER */
-        header { background: #000; padding: 60px 20px; text-align: center; border-bottom: 4px solid var(--gold); background-image: radial-gradient(circle at center, #1e293b 0%, #000 100%); }
+        /* HEADER Y TICKER */
+        header { background: #000; padding: 60px 20px; text-align: center; border-bottom: 4px solid var(--gold); }
         header h1 { font-size: 3.5rem; margin: 0; color: var(--gold); font-weight: 900; }
         header p { color: #94a3b8; letter-spacing: 5px; text-transform: uppercase; font-size: 0.85rem; margin-top: 10px; }
 
         /* NAVEGACIÓN */
-        nav { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1e293b; }
-        nav a { color: #fff; margin: 0 20px; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; padding: 10px; }
-        nav a:hover { color: var(--gold); background: rgba(245, 158, 11, 0.1); border-radius: 5px; }
+        nav { background: #000; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1e293b; }
+        nav a { color: #fff; margin: 0 20px; text-decoration: none; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; }
+        nav a:hover { color: var(--gold); }
 
         .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
         .section { display: none; }
         .active { display: block; }
 
-        /* GRID DE NOTICIAS (15 BLOQUES) */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .news-card { background: var(--card); border: 1px solid #2d3748; border-radius: 12px; padding: 30px; transition: 0.3s; display: flex; flex-direction: column; height: 220px; }
-        .news-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .tag { color: var(--gold); font-size: 0.7rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1px; }
-        .news-card h2 { font-size: 1.4rem; margin: 10px 0; line-height: 1.3; color: #fff; }
-        .news-card p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; flex-grow: 1; overflow: hidden; }
+        /* NOTICIAS */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .news-card { background: var(--card); border: 1px solid #2d3748; border-radius: 12px; padding: 30px; }
+        .tag { color: var(--gold); font-size: 0.7rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; display: block; }
 
-        /* MERCADO TERMINAL - ESTRUCTURA ORIGINAL EXACTA */
-        .market-container { background: #000; border: 1px solid var(--gold); border-radius: 15px; padding: 25px; }
-        .market-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        @media (max-width: 950px) { .market-layout { grid-template-columns: 1fr; } }
-        .box { background: #0c111d; border-radius: 10px; overflow: hidden; border: 1px solid #1e293b; }
+        /* MERCADO - ESTRUCTURA ORIGINAL */
+        .market-terminal { background: #000; border: 1px solid var(--gold); border-radius: 15px; padding: 25px; }
+        .terminal-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 20px; }
+        @media (max-width: 900px) { .terminal-grid { grid-template-columns: 1fr; } }
+        .terminal-box { background: #0c111d; border-radius: 10px; overflow: hidden; border: 1px solid #1e293b; height: 500px; }
 
-        footer { text-align: center; padding: 80px; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 50px; }
+        /* TEXTOS LEGALES */
+        .legal-box { background: var(--card); padding: 40px; border-radius: 12px; line-height: 1.8; color: #94a3b8; }
+        .legal-box h2 { color: var(--gold); }
+
+        footer { text-align: center; padding: 60px; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
 
-<div class="ticker-wrap">
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-    { "symbols": [{"proName": "BINANCE:BTCUSDT", "title": "BTC/USDT"}, {"proName": "BINANCE:ETHUSDT", "title": "ETH/USDT"}, {"proName": "BINANCE:SOLUSDT", "title": "SOL/USDT"}, {"proName": "BINANCE:XRPUSDT", "title": "XRP/USDT"}], "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "es" }
-    </script>
-</div>
-
 <header>
     <h1>CRYPTO FINANCIAL TIMES</h1>
-    <p>Institutional Asset Intelligence • Global Edition 2026</p>
+    <p>The New Standard in Global Digital Wealth</p>
 </header>
 
 <nav>
-    <a onclick="show('news')">Análisis e Informes</a>
-    <a onclick="show('terminal')">Terminal de Mercado</a>
+    <a onclick="show('home')">Home</a>
+    <a onclick="show('market')">Market Terminal</a>
+    <a onclick="show('privacy')">Privacy Policy</a>
+    <a onclick="show('terms')">Terms of Service</a>
 </nav>
 
 <div class="container">
     
-    <div id="news" class="section active">
+    <div id="home" class="section active">
         <div class="news-grid">
-            <div class="news-card"><span class="tag">Institucional</span><h2>BlackRock IBIT alcanza $35B</h2><p>El flujo de capital institucional hacia el ETF de Bitcoin marca un nuevo récord histórico en activos bajo custodia.</p></div>
-            <div class="news-card"><span class="tag">Infraestructura</span><h2>Solana Firedancer entra en Mainnet</h2><p>La nueva arquitectura permite alcanzar el millón de TPS, eliminando cuellos de botella para el trading de alta frecuencia.</p></div>
-            <div class="news-card"><span class="tag">Regulación</span><h2>MiCA 2: Claridad total en Europa</h2><p>La Unión Europea establece el marco definitivo para la operativa de stablecoins y activos digitales para 2026.</p></div>
-            <div class="news-card"><span class="tag">ETF Update</span><h2>Entradas netas en Ethereum Spot</h2><p>Los fondos de pensiones en EE.UU. comienzan su primera fase de acumulación masiva de Ethereum tras la aprobación regulatoria.</p></div>
-            <div class="news-card"><span class="tag">Macro</span><h2>Bitcoin como Reserva de Tesorería</h2><p>Más de 50 empresas del S&P 500 ya mantienen una reserva estratégica en BTC para combatir la inflación de divisas fiduciarias.</p></div>
-            <div class="news-card"><span class="tag">Mining</span><h2>Eficiencia Energética al 90%</h2><p>La industria del minado de Bitcoin se consolida como el principal motor de desarrollo de energías renovables a nivel global.</p></div>
-            <div class="news-card"><span class="tag">CBDC</span><h2>Fase Beta del Euro Digital</h2><p>El BCE lanza las primeras pruebas de interoperabilidad con bancos comerciales para la liquidación de pagos minoristas.</p></div>
-            <div class="news-card"><span class="tag">Banking</span><h2>JPMorgan procesa activos On-Chain</h2><p>La red interna del banco ya liquida más de $2.000 millones diarios utilizando tecnología blockchain para reducir costes.</p></div>
-            <div class="news-card"><span class="tag">RWA</span><h2>Inmuebles tokenizados en Dubai</h2><p>El mercado inmobiliario fraccionado crece un 300% permitiendo el acceso a pequeños inversores institucionales.</p></div>
-            <div class="news-card"><span class="tag">Privacidad</span><h2>ZKP en Finanzas Tradicionales</h2><p>Las pruebas de conocimiento cero se convierten en el estándar para verificar solvencia sin revelar datos sensibles.</p></div>
-            <div class="news-card"><span class="tag">AI & Crypto</span><h2>IA opera nodos de validación</h2><p>Agentes autónomos de IA comienzan a gestionar la liquidez en protocolos DeFi de manera optimizada y sin intervención humana.</p></div>
-            <div class="news-card"><span class="tag">Layer 2</span><h2>Capa 2 de Bitcoin: El nuevo boom</h2><p>Stacks y Rootstock registran volúmenes récord de contratos inteligentes sobre la seguridad de la red Bitcoin.</p></div>
-            <div class="news-card"><span class="tag">Web3</span><h2>Identidad Descentralizada</h2><p>Sistemas DID eliminan la necesidad de contraseñas tradicionales en los portales financieros de alta seguridad.</p></div>
-            <div class="news-card"><span class="tag">Security</span><h2>Auditorías por IA en DeFi</h2><p>El uso de modelos de lenguaje para auditar código reduce los exploits en contratos inteligentes a mínimos históricos.</p></div>
-            <div class="news-card"><span class="tag">Exchanges</span><h2>DEX superan volumen de CEX</h2><p>Las bolsas descentralizadas ya manejan el 60% del volumen de trading diario gracias a mejores interfaces de usuario.</p></div>
-        </div>
+            <div class="news-card"><span class="tag">Institutional</span><h2>BlackRock IBIT: $35B Milestone</h2><p>Institutional flow into Bitcoin ETFs continues to accelerate as sovereign wealth funds begin diversification.</p></div>
+            <div class="news-card"><span class="tag">Infrastructure</span><h2>Solana Firedancer Mainnet</h2><p>The new validator client reaches 1M TPS, positioning Solana as the high-speed rail of finance.</p></div>
+            <div class="news-card"><span class="tag">Regulation</span><h2>MiCA 2 Implementation</h2><p>Europe sets the global standard for digital asset regulation, fostering institutional trust.</p></div>
+            </div>
     </div>
 
-    <div id="terminal" class="section">
-        <div class="market-container">
-            <div class="market-layout">
-                <div class="box" style="height: 600px;">
-                    <div id="tv-chart-main" style="height: 100%;"></div>
-                </div>
-                <div class="box" style="padding: 20px;">
-                    <h3 style="color: var(--gold); text-align: center; font-size: 0.8rem; margin-bottom: 20px;">TECHNICAL INDICATOR</h3>
+    <div id="market" class="section">
+        <div class="market-terminal">
+            <div class="terminal-grid">
+                <div class="terminal-box" id="tv-main-chart"></div>
+                <div class="terminal-box" style="padding: 10px;">
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
                     { "interval": "1D", "width": "100%", "isTransparent": true, "height": 450, "symbol": "BINANCE:BTCUSDT", "showIntervalTabs": true, "locale": "es", "colorTheme": "dark" }
                     </script>
@@ -99,28 +78,34 @@
         </div>
     </div>
 
+    <div id="privacy" class="section">
+        <div class="legal-box">
+            <h2>Privacy Policy</h2>
+            <p>At Crypto Financial Times, we prioritize the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by our terminal.</p>
+            <p><strong>Log Files:</strong> We follow a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics.</p>
+            <p><strong>Cookies:</strong> Like any other website, we use 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited.</p>
+        </div>
+    </div>
+
+    <div id="terms" class="section">
+        <div class="legal-box">
+            <h2>Terms of Service</h2>
+            <p>By accessing this website, we assume you accept these terms and conditions. Do not continue to use Crypto Financial Times if you do not agree to take all of the terms and conditions stated on this page.</p>
+            <p><strong>License:</strong> Unless otherwise stated, Crypto Financial Times and/or its licensors own the intellectual property rights for all material on the website.</p>
+        </div>
+    </div>
+
 </div>
 
-<footer>&copy; 2026 CRYPTO FINANCIAL TIMES | Institutional Intelligence Hub</footer>
+<footer>&copy; 2026 CRYPTO FINANCIAL TIMES | Financial Intelligence</footer>
 
 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 <script>
     function show(id) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
-        if(id === 'terminal') {
-            new TradingView.widget({
-                "autosize": true,
-                "symbol": "BINANCE:BTCUSDT",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "dark",
-                "style": "1",
-                "locale": "es",
-                "toolbar_bg": "#f1f3f6",
-                "enable_publishing": false,
-                "container_id": "tv-chart-main"
-            });
+        if(id === 'market') {
+            new TradingView.widget({ "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "es", "container_id": "tv-main-chart" });
         }
     }
 </script>
