@@ -9,6 +9,16 @@
     <style>
         :root { --gold: #f59e0b; --card-bg: #161c2d; --text-muted: #94a3b8; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #0b0f1a; color: #fff; overflow-x: hidden; }
+        
+        /* MEJORA DEL TICKER SUPERIOR */
+        .ticker-wrapper { 
+            background: #000; 
+            border-bottom: 1px solid #1e293b; 
+            height: 46px; 
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
         header { background: #000; padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); background-image: radial-gradient(circle at center, #1e293b 0%, #000 100%); }
         .nav { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 12px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         .nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; cursor: pointer; transition: 0.3s; padding: 8px 12px; }
@@ -25,8 +35,6 @@
         .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.7; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: justify; }
         .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 4px; text-align: center; }
         .legal-box { background: var(--card-bg); padding: 50px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; }
-        #cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; border-top: 2px solid var(--gold); padding: 20px; z-index: 9999; display: flex; justify-content: center; align-items: center; gap: 20px; }
-        .cookie-btn { background: var(--gold); color: #000; border: none; padding: 10px 25px; border-radius: 5px; font-weight: 800; cursor: pointer; }
         footer { text-align: center; padding: 60px; background: #000; border-top: 1px solid #1e293b; }
         .page-section { display: none; }
         .active { display: block !important; }
@@ -38,10 +46,29 @@
 </head>
 <body>
 
-<div style="background:#000; border-bottom:1px solid #222;">
-    <script async src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
-    { "symbols": [{"proName": "BINANCE:BTCUSDT", "title": "BTC"}, {"proName": "BINANCE:ETHUSDT", "title": "ETH"}, {"proName": "BINANCE:SOLUSDT", "title": "SOL"}, {"proName": "BINANCE:BNBUSDT", "title": "BNB"}], "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en" }
-    </script>
+<div class="ticker-wrapper">
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+        {
+          "symbols": [
+            {"proName": "BINANCE:BTCUSDT", "title": "BTC/USDT"},
+            {"proName": "BINANCE:ETHUSDT", "title": "ETH/USDT"},
+            {"proName": "BINANCE:SOLUSDT", "title": "SOL/USDT"},
+            {"proName": "BINANCE:BNBUSDT", "title": "BNB/USDT"},
+            {"proName": "BINANCE:XRPUSDT", "title": "XRP/USDT"},
+            {"proName": "BINANCE:ADAUSDT", "title": "ADA/USDT"},
+            {"proName": "BINANCE:DOTUSDT", "title": "DOT/USDT"},
+            {"proName": "BINANCE:LINKUSDT", "title": "LINK/USDT"}
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+    </div>
 </div>
 
 <header>
@@ -59,8 +86,7 @@
 
 <div class="container">
     <div class="page-section active" id="home">
-        <div class="grid" id="news-container">
-            </div>
+        <div class="grid" id="news-container"></div>
     </div>
 
     <div class="page-section" id="markets">
@@ -97,8 +123,8 @@
         </div>
     </div>
 
-    <div class="page-section" id="privacy"><div class="legal-box"><h2>Privacy Policy</h2><p>At Crypto Financial Times, we prioritize the protection of our users...</p></div></div>
-    <div class="page-section" id="terms"><div class="legal-box"><h2>Terms of Service</h2><p>The content provided by Crypto Financial Times is for educational purposes only...</p></div></div>
+    <div class="page-section" id="privacy"><div class="legal-box"><h2>Privacy Policy</h2><p>Our commitment to your privacy is institutional-grade...</p></div></div>
+    <div class="page-section" id="terms"><div class="legal-box"><h2>Terms of Service</h2><p>All data is provided for informational purposes only...</p></div></div>
     <div class="page-section" id="contact"><div class="legal-box" style="text-align:center;"><h2>Contact Intelligence Unit</h2><p style="color:var(--gold); font-size:24px; font-weight:900;">contact@cryptofinancialtimes.online</p></div></div>
 </div>
 
@@ -107,21 +133,21 @@
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 const articles = [
-    {tag:"Institutional", title:"BlackRock IBIT Inflows", sum:"Bitcoin ETFs redefine portfolio allocation in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"BlackRock's IBIT has seen unprecedented inflows, signaling that major wealth managers are now allocating up to 5% of traditional portfolios into digital assets."},
-    {tag:"Banking", title:"JPM Coin Volume Surge", sum:"JPMorgan settlements over $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"JPMorgan is leading the banking revolution by utilizing private blockchain ledgers for high-velocity settlements."},
-    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows from Tech stocks into digital assets.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"Market analysts observe capital moving from tech stocks into finite digital assets like Bitcoin."},
-    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New standards provide clarity for global custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"New frameworks allow banks to hold crypto on balance sheets without capital penalties."},
-    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents executing complex smart contracts.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"AI-driven yield aggregators have pushed DeFi TVL to record highs by optimizing liquidity."},
-    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"Node hardware requirements dropped 90%, massively increasing decentralization."},
-    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"The new validator client has provided the network with unmatched institutional throughput."},
-    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"B2B global settlement times have dropped from days to seconds using stable rails."},
-    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"Bitcoin miners are now primary grid stabilizers for renewable energy grids."},
-    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"Institutions adopt ZK-proofs to prove solvency without leaking sensitive data."},
-    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"Clear rules are attracting major DeFi protocols to headquarters in the EU."},
-    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"The latest devices now act as full hardware wallets with institutional security."},
-    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership of global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"Real estate liquidity has increased 10x due to on-chain fragmentation."},
-    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"Users can move assets between different Layer 2 networks without bridging friction."},
-    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"Networks are now prepared for the next era of high-performance computing."}
+    {tag:"Institutional", title:"BlackRock IBIT Inflows", sum:"Bitcoin ETFs redefine portfolio allocation in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"BlackRock's IBIT has seen unprecedented inflows, signaling a shift in global asset management."},
+    {tag:"Banking", title:"JPM Coin Volume Surge", sum:"JPMorgan settlements over $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"JPM Coin handles massive daily volumes, reducing settlement times to seconds."},
+    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows from Tech stocks into digital assets.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"Analysts report a major shift toward digital scarcity as an inflation hedge."},
+    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New standards provide clarity for global custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"Banks can now custody digital assets under new federal guidelines."},
+    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents executing complex smart contracts.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"DeFi TVL hits record highs thanks to AI-driven yield optimization."},
+    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"Decentralization peaks as node hardware requirements drop by 90%."},
+    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"The network achieves extreme scale while maintaining full decentralization."},
+    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"Corporations bypass intermediate banks for instant international trade."},
+    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"Bitcoin mining operations stabilize renewable grids worldwide."},
+    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"Financial privacy meets regulatory compliance through ZK technology."},
+    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"The EU becomes the premier hub for digital asset innovation."},
+    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"Institutional-grade security now fits in the palm of your hand."},
+    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership of global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"On-chain fragmentation increases property liquidity by 10x."},
+    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"Seamless asset moves between Layer 2 networks unify liquidity."},
+    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"Blockchains secure their systems against future quantum attacks."}
 ];
 
 function loadNews() {
