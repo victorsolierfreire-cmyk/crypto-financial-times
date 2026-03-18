@@ -8,55 +8,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
     
     <meta name="description" content="Digital asset intelligence terminal for institutional investors. In-depth analysis, real-time market data, and global coverage of Bitcoin, Ethereum, and DeFi."/>
-    <meta name="keywords" content="crypto news, bitcoin institutional, ethereum analysis, DeFi data, market intelligence, crypto financial times, digital asset terminal"/>
     
     <style>
         :root { --gold: #f59e0b; --card-bg: #161c2d; --text-muted: #94a3b8; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #0b0f1a; color: #fff; overflow-x: hidden; }
         
-        /* TOP TICKER */
-        .ticker-wrapper { background: #000; border-bottom: 1px solid #1e293b; height: 46px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        /* TICKER */
+        .ticker-wrapper { background: #000; border-bottom: 1px solid #1e293b; height: 46px; overflow: hidden; }
         
         header { background: #000; padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); background-image: radial-gradient(circle at center, #1e293b 0%, #000 100%); }
-        header h1 { font-size: 3rem; margin: 0; color: var(--gold); font-weight: 900; letter-spacing: -1px; }
-        header p { color: var(--text-muted); letter-spacing: 5px; text-transform: uppercase; font-size: 0.75rem; margin-top: 10px; }
+        header h1 { font-size: 2.8rem; margin: 0; color: var(--gold); font-weight: 900; letter-spacing: -1px; }
+        header p { color: var(--text-muted); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-top: 10px; }
 
         .nav { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 12px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
-        .nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; cursor: pointer; transition: 0.3s; padding: 8px 12px; }
-        .nav a:hover { color: var(--gold); background: rgba(245, 158, 11, 0.1); border-radius: 5px; }
+        .nav a { color: #fff; margin: 0 10px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; cursor: pointer; padding: 8px; }
         
-        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; min-height: 70vh; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 15px; min-height: 70vh; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         
         /* CARDS */
-        .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2d3748; display: flex; flex-direction: column; transition: 0.4s ease; height: 100%; }
-        .card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 45px rgba(0,0,0,0.8); }
-        .news-thumb { width: 100%; height: 210px; background-size: cover; background-position: center; border-bottom: 1px solid #2d3748; }
-        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .card-tag { color: var(--gold); font-size: 10px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; display: block; letter-spacing: 1.5px; }
-        .card-title { font-size: 20px; margin: 10px 0; color: #fff; font-weight: 700; line-height: 1.3; }
-        .card-summary { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
-        .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.8; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: justify; }
+        .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2d3748; display: flex; flex-direction: column; transition: 0.3s; height: 100%; }
+        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .news-thumb { width: 100%; height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid #2d3748; }
+        .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-tag { color: var(--gold); font-size: 10px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
+        .card-title { font-size: 19px; margin: 8px 0; color: #fff; font-weight: 700; line-height: 1.3; }
+        .card-summary { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+        .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.7; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: justify; }
         
-        .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 4px; text-align: center; }
+        .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; text-align: center; }
 
-        /* LEGAL & CONTACT */
-        .legal-box { background: var(--card-bg); padding: 50px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; max-width: 800px; margin: 0 auto; }
-        .contact-card { background: #0b0f1a; border: 1px solid var(--gold); padding: 30px; border-radius: 12px; margin-top: 30px; text-align: center; }
+        /* LEGAL & CONTACT (MOBILE FIXED) */
+        .legal-box { background: var(--card-bg); padding: 40px 20px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; max-width: 800px; margin: 0 auto; text-align: center; }
+        .contact-card { background: #0b0f1a; border: 1px solid var(--gold); padding: 25px 15px; border-radius: 12px; margin-top: 25px; overflow: hidden; }
+        .contact-email { color: var(--gold); font-size: 18px; font-weight: 900; text-decoration: none; display: block; word-wrap: break-word; overflow-wrap: anywhere; line-height: 1.4; }
 
-        /* MARKET TERMINAL */
-        .market-terminal { background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 20px; }
+        /* TERMINAL */
+        .market-terminal { background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 15px; }
         .terminal-grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
         @media (max-width: 1000px) { .terminal-grid { grid-template-columns: 1fr; } }
-        .terminal-box { background: #0c111d; border: 1px solid #2d3748; border-radius: 8px; padding: 15px; }
         
-        /* FOOTER */
-        footer { text-align: center; padding: 60px; background: #000; border-top: 1px solid #1e293b; margin-top: 50px; }
-        #back-top { position: fixed; bottom: 25px; right: 25px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; font-weight: 900; }
-        .skeleton-card { background: var(--card-bg); border-radius: 12px; height: 450px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #1e293b; margin-top: 40px; font-size: 12px; color: var(--text-muted); }
+        #back-top { position: fixed; bottom: 20px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
+        
         .page-section { display: none; }
         .active { display: block !important; }
+        .skeleton-card { background: var(--card-bg); border-radius: 12px; height: 400px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
@@ -68,8 +66,7 @@
         {"proName": "BINANCE:ETHUSDT", "title": "ETH/USDT"},
         {"proName": "BINANCE:SOLUSDT", "title": "SOL/USDT"},
         {"proName": "BINANCE:BNBUSDT", "title": "BNB/USDT"},
-        {"proName": "BINANCE:XRPUSDT", "title": "XRP/USDT"},
-        {"proName": "BINANCE:LINKUSDT", "title": "LINK/USDT"}
+        {"proName": "BINANCE:XRPUSDT", "title": "XRP/USDT"}
       ], "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en" }
     </script>
 </div>
@@ -97,18 +94,14 @@
         <div class="market-terminal">
             <div class="terminal-grid">
                 <div>
-                    <div class="terminal-box" style="height: 550px; margin-bottom:20px;"><div id="tv_main_chart" style="height:100%;"></div></div>
-                    <div class="terminal-box" style="height: 400px;">
+                    <div id="tv_main_chart" style="height: 500px; margin-bottom:20px;"></div>
+                    <div style="height: 400px;">
                         <script async src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js">{ "width": "100%", "height": "100%", "screener_type": "crypto_mkt", "colorTheme": "dark", "isTransparent": true }</script>
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:20px;">
-                    <div class="terminal-box" style="height:350px;">
-                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "height": "300", "colorTheme": "dark", "isTransparent": true }</script>
-                    </div>
-                    <div class="terminal-box" style="flex-grow:1;">
-                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "colorTheme": "dark", "isTransparent": true }</script>
-                    </div>
+                    <script async src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "height": "350", "colorTheme": "dark", "isTransparent": true }</script>
+                    <script async src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "colorTheme": "dark", "isTransparent": true }</script>
                 </div>
             </div>
         </div>
@@ -117,25 +110,27 @@
     <div class="page-section" id="privacy">
         <div class="legal-box">
             <h2>Privacy Policy</h2>
-            <p><strong>Effective Date: March 18, 2026.</strong> Crypto Financial Times uses institutional-grade encryption to safeguard user data. We do not engage in the commercial trade of personally identifiable information (PII). Our platform utilizes anonymized analytical cookies to optimize terminal performance and traffic flow.</p>
+            <p><strong>Effective: March 18, 2026.</strong> Crypto Financial Times uses high-level encryption to protect user privacy. We do not sell or trade personal data. We use anonymized analytical tools to optimize terminal performance.</p>
         </div>
     </div>
 
     <div class="page-section" id="terms">
         <div class="legal-box">
             <h2>Terms of Service</h2>
-            <p>The information provided by this terminal is for educational purposes only. Digital asset markets involve significant risk of capital loss. Crypto Financial Times is not liable for losses resulting from market volatility or investment decisions made based on this data.</p>
+            <p>Content provided is for informational purposes only. Digital assets involve high risk. Crypto Financial Times is not responsible for financial losses based on market volatility.</p>
         </div>
     </div>
 
     <div class="page-section" id="contact">
-        <div class="legal-box" style="text-align:center;">
+        <div class="legal-box">
             <div style="font-size: 40px; margin-bottom: 10px;">✉️</div>
             <h2>Institutional Support</h2>
-            <p>For editorial inquiries, partnerships, or technical data support:</p>
+            <p style="font-size: 14px;">For editorial inquiries or technical support:</p>
             <div class="contact-card">
-                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);">Official Correspondence</p>
-                <a href="mailto:contact@cryptofinancialtimes.online" style="color: var(--gold); font-size: 20px; font-weight: 900; text-decoration: none;">contact@cryptofinancialtimes.online</a>
+                <p style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Official Email</p>
+                <a href="mailto:contact@cryptofinancialtimes.online" class="contact-email">
+                    contact@cryptofinancialtimes.online
+                </a>
             </div>
         </div>
     </div>
@@ -143,28 +138,26 @@
 
 <button id="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
-<footer>
-    <p>© 2026 CRYPTO FINANCIAL TIMES | Institutional Digital Intelligence</p>
-</footer>
+<footer><p>© 2026 CRYPTO FINANCIAL TIMES | Institutional Digital Intelligence</p></footer>
 
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 const articles = [
-    {tag:"Institutional", title:"BlackRock IBIT Inflows Peak", sum:"Bitcoin ETFs redefine portfolio allocation for global wealth managers in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"<p>The institutional market has reached full maturity. With global pension funds entering BlackRock’s IBIT ETF, Bitcoin is consolidating as a Tier-1 reserve asset. Analysts expect lower structural volatility as long-term capital absorbs circulating supply.</p>"},
-    {tag:"Banking", title:"JPM Coin Daily Volume", sum:"JPMorgan settlements exceed $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"<p>Private banking is migrating to blockchain rails. JPM Coin is processing record volumes, eliminating the need for correspondent banks and reducing settlement times from days to seconds.</p>"},
-    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows move from tech stocks into digital scarcity.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"<p>We are witnessing a historic asset rotation. Investors are shifting away from traditional tech growth toward programmed digital scarcity, seeking protection against global monetary expansion.</p>"},
-    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New accounting standards provide clarity for custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"<p>New regulations finally allow commercial banks to natively custody digital assets. This removes counterparty risk and opens the door for massive adoption by S&P 500 corporations.</p>"},
-    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents drive TVL to record highs.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"<p>Artificial intelligence has taken control of yield generation. Autonomous agents now manage 60% of liquidity in DeFi protocols, optimizing capital across chains instantaneously.</p>"},
-    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions of nodes.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"<p>The Verge update has democratized Ethereum security. It is now possible to run a full node on a smartphone, ensuring total decentralization against state pressures.</p>"},
-    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"<p>With the Firedancer client, Solana competes directly with Nasdaq systems. Latency has dropped to imperceptible levels, allowing high-frequency trading on-chain.</p>"},
-    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"<p>International trade has found its currency. USDC has become the standard for cross-border settlements, reducing operational costs by 85% for logistics companies.</p>"},
-    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"<p>Bitcoin mining is now the primary driver for solar and wind projects. Miners act as buyers of last resort for excess energy, financing the global energy transition.</p>"},
-    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge technology becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"<p>Institutional privacy is no longer an issue. Zero-Knowledge proofs allow for real-time audits without revealing sensitive client data or market strategies.</p>"},
-    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies global lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"<p>The European Union has become the safe harbor for crypto firms. MiCA 2.0 provides the legal certainty that large funds need to operate across the continent.</p>"},
-    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach cold storage parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"<p>Military-grade security has reached the pocket. New mobile chips allow for self-custody of assets with the same security as a dedicated physical device.</p>"},
-    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership democratizes global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"<p>Real estate ownership is now liquid. Thanks to tokenization, retail investors can own fractions of commercial buildings in London or New York with a single click.</p>"},
-    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"<p>The Layer 2 ecosystem has dissolved its borders. Moving assets between Arbitrum, Optimism, and Base is now instant and cost-effective, creating a unified user experience.</p>"},
-    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"<p>Future-proof security is here. Major networks have migrated to post-quantum cryptography, ensuring that assets remain secure against any computational advancement.</p>"}
+    {tag:"Institutional", title:"BlackRock IBIT Inflows Peak", sum:"Bitcoin ETFs redefine portfolio allocation for global wealth managers in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"<p>Institutional demand has reached maturity. With global pension funds entering the market via BlackRock's IBIT, Bitcoin is now a Tier-1 reserve asset.</p>"},
+    {tag:"Banking", title:"JPM Coin Daily Volume", sum:"JPMorgan settlements exceed $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"<p>Private banking is migrating to blockchain rails. JPM Coin processes record volumes, reducing settlement times from days to seconds.</p>"},
+    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows from tech stocks into digital scarcity.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"<p>Investors are shifting from traditional growth stocks to programmed digital scarcity as a hedge against global monetary expansion.</p>"},
+    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New standards provide clarity for global custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"<p>New frameworks finally allow commercial banks to natively custody digital assets, removing counterparty risks for S&P 500 firms.</p>"},
+    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents drive TVL to record highs.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"<p>AI now manages 60% of DeFi liquidity, optimizing capital across multiple chains instantaneously for maximum yield efficiency.</p>"},
+    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions of nodes.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"<p>The Verge update allows full nodes to run on smartphones, ensuring total decentralization against centralized state pressures.</p>"},
+    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"<p>Firedancer enables Solana to compete with Nasdaq-level latency, positioning it as the premier layer for high-frequency trading.</p>"},
+    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"<p>USDC has become the global standard for cross-border B2B settlements, reducing transaction costs for logistics by 85%.</p>"},
+    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"<p>Bitcoin mining is now the primary financier for renewable energy projects, utilizing stranded energy to stabilize power grids.</p>"},
+    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge technology becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"<p>ZK-proofs allow real-time institutional audits without compromising sensitive client data or proprietary market strategies.</p>"},
+    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies global lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"<p>MiCA 2.0 provides the legal certainty required by large funds to operate across Europe, making the EU a premier fintech hub.</p>"},
+    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach cold storage parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"<p>Military-grade security has reached mobile devices, allowing for institutional-level self-custody with simple biometric access.</p>"},
+    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership democratizes global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"<p>Real estate is now liquid. Investors can own fractions of prime commercial buildings in NYC or London with a single click.</p>"},
+    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"<p>The L2 ecosystem has dissolved its borders. Moving assets between networks is now instant, creating a unified liquidity pool.</p>"},
+    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"<p>Major blockchains have successfully migrated to post-quantum cryptography, securing global assets against future compute threats.</p>"}
 ];
 
 function loadNews() {
