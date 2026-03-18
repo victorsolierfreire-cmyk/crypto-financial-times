@@ -6,19 +6,14 @@
     <title>Crypto Financial Times | Institutional Asset Intelligence</title>
     <link href="https://cdn-icons-png.flaticon.com/512/1490/1490849.png" rel="icon" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
+    
+    <meta name="description" content="Terminal de inteligencia de activos digitales. Análisis institucional, datos de mercado en vivo y noticias de última hora sobre Bitcoin, Ethereum y DeFi."/>
+    <meta name="keywords" content="crypto news, bitcoin, ethereum, DeFi, institutional trading, market analytics, crypto financial times"/>
+    
     <style>
         :root { --gold: #f59e0b; --card-bg: #161c2d; --text-muted: #94a3b8; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #0b0f1a; color: #fff; overflow-x: hidden; }
-        
-        /* MEJORA DEL TICKER SUPERIOR */
-        .ticker-wrapper { 
-            background: #000; 
-            border-bottom: 1px solid #1e293b; 
-            height: 46px; 
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
+        .ticker-wrapper { background: #000; border-bottom: 1px solid #1e293b; height: 46px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         header { background: #000; padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); background-image: radial-gradient(circle at center, #1e293b 0%, #000 100%); }
         .nav { background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); padding: 12px; text-align: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #334155; }
         .nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; cursor: pointer; transition: 0.3s; padding: 8px 12px; }
@@ -35,6 +30,8 @@
         .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.7; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: justify; }
         .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px 15px; border-radius: 4px; text-align: center; }
         .legal-box { background: var(--card-bg); padding: 50px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; }
+        #cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #000; border-top: 2px solid var(--gold); padding: 20px; z-index: 9999; display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .cookie-btn { background: var(--gold); color: #000; border: none; padding: 10px 25px; border-radius: 5px; font-weight: 800; cursor: pointer; }
         footer { text-align: center; padding: 60px; background: #000; border-top: 1px solid #1e293b; }
         .page-section { display: none; }
         .active { display: block !important; }
@@ -42,33 +39,26 @@
         .terminal-grid { display: grid; grid-template-columns: 1fr 300px; gap: 20px; margin-bottom: 20px; }
         @media (max-width: 900px) { .terminal-grid { grid-template-columns: 1fr; } }
         .terminal-box { background: #0c111d; border: 1px solid #2d3748; border-radius: 8px; padding: 15px; }
+        
+        /* SKELETON ANIMATION */
+        .skeleton-card { background: var(--card-bg); border-radius: 12px; height: 500px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        /* BACK TO TOP */
+        #back-top { position: fixed; bottom: 20px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
+        
+        /* FORM */
+        .contact-form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 30px auto; }
+        .contact-form input, .contact-form textarea { background: #0b0f1a; border: 1px solid #334155; color: #fff; padding: 15px; border-radius: 8px; }
+        .contact-form button { background: var(--gold); color: #000; font-weight: 900; padding: 15px; border-radius: 8px; cursor: pointer; border: none; }
     </style>
 </head>
 <body>
 
 <div class="ticker-wrapper">
-    <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
-        {
-          "symbols": [
-            {"proName": "BINANCE:BTCUSDT", "title": "BTC/USDT"},
-            {"proName": "BINANCE:ETHUSDT", "title": "ETH/USDT"},
-            {"proName": "BINANCE:SOLUSDT", "title": "SOL/USDT"},
-            {"proName": "BINANCE:BNBUSDT", "title": "BNB/USDT"},
-            {"proName": "BINANCE:XRPUSDT", "title": "XRP/USDT"},
-            {"proName": "BINANCE:ADAUSDT", "title": "ADA/USDT"},
-            {"proName": "BINANCE:DOTUSDT", "title": "DOT/USDT"},
-            {"proName": "BINANCE:LINKUSDT", "title": "LINK/USDT"}
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "dark",
-          "isTransparent": true,
-          "displayMode": "adaptive",
-          "locale": "en"
-        }
-        </script>
-    </div>
+    <script async src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
+    { "symbols": [{"proName": "BINANCE:BTCUSDT", "title": "BTC/USDT"}, {"proName": "BINANCE:ETHUSDT", "title": "ETH/USDT"}, {"proName": "BINANCE:SOLUSDT", "title": "SOL/USDT"}, {"proName": "BINANCE:BNBUSDT", "title": "BNB/USDT"}], "showSymbolLogo": true, "colorTheme": "dark", "isTransparent": true, "displayMode": "adaptive", "locale": "en" }
+    </script>
 </div>
 
 <header>
@@ -86,72 +76,92 @@
 
 <div class="container">
     <div class="page-section active" id="home">
-        <div class="grid" id="news-container"></div>
+        <div class="grid" id="skeleton-load"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
+        <div class="grid" id="news-container" style="display:none;"></div>
     </div>
 
     <div class="page-section" id="markets">
         <div class="market-terminal">
             <div class="terminal-grid">
                 <div>
-                    <div class="terminal-box" style="height: 550px; margin-bottom:20px; border-color: var(--gold);">
-                        <div id="tv_main_chart" style="height:100%; width:100%;"></div>
-                    </div>
+                    <div class="terminal-box" style="height: 550px; margin-bottom:20px; border-color: var(--gold);"><div id="tv_main_chart" style="height:100%; width:100%;"></div></div>
                     <div class="terminal-box" style="height: 450px;">
-                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js">
-                        { "width": "100%", "height": "100%", "defaultColumn": "overview", "screener_type": "crypto_mkt", "displayCurrency": "USD", "colorTheme": "dark", "locale": "en", "isTransparent": true }
-                        </script>
+                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js">{ "width": "100%", "height": "100%", "screener_type": "crypto_mkt", "displayCurrency": "USD", "colorTheme": "dark", "isTransparent": true }</script>
                     </div>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:20px;">
                     <div class="terminal-box" style="height:320px;">
-                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">
-                        { "interval": "1D", "width": "100%", "isTransparent": true, "height": "260", "symbol": "BINANCE:BTCUSDT", "showIntervalTabs": false, "displayMode": "single", "locale": "en", "colorTheme": "dark" }
-                        </script>
+                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">{ "interval": "1D", "width": "100%", "height": "260", "symbol": "BINANCE:BTCUSDT", "isTransparent": true, "colorTheme": "dark" }</script>
                     </div>
                     <div class="terminal-box" style="flex-grow:1;">
-                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js">
-                        { "symbol": "BINANCE:BTCUSDT", "width": "100%", "locale": "en", "colorTheme": "dark", "isTransparent": true }
-                        </script>
-                        <div style="margin-top:15px;">
-                            <script async src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js">
-                            { "symbol": "BINANCE:ETHUSDT", "width": "100%", "locale": "en", "colorTheme": "dark", "isTransparent": true }
-                            </script>
-                        </div>
+                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "colorTheme": "dark", "isTransparent": true }</script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="page-section" id="privacy"><div class="legal-box"><h2>Privacy Policy</h2><p>Our commitment to your privacy is institutional-grade...</p></div></div>
-    <div class="page-section" id="terms"><div class="legal-box"><h2>Terms of Service</h2><p>All data is provided for informational purposes only...</p></div></div>
-    <div class="page-section" id="contact"><div class="legal-box" style="text-align:center;"><h2>Contact Intelligence Unit</h2><p style="color:var(--gold); font-size:24px; font-weight:900;">contact@cryptofinancialtimes.online</p></div></div>
+    <div class="page-section" id="privacy">
+        <div class="legal-box">
+            <h2>Privacy Policy</h2>
+            <p><strong>Effective Date:</strong> March 18, 2026</p>
+            <p>At Crypto Financial Times, we handle your data with institutional-grade security. This site uses cookies to enhance market terminal performance and analyze traffic anonymously. No personal financial data is stored on our servers.</p>
+        </div>
+    </div>
+
+    <div class="page-section" id="terms">
+        <div class="legal-box">
+            <h2>Terms of Service</h2>
+            <p>All financial information provided is for educational purposes. Crypto Financial Times does not provide investment advice. Digital assets carry high market risk.</p>
+        </div>
+    </div>
+
+    <div class="page-section" id="contact">
+        <div class="legal-box" style="text-align:center;">
+            <h2>Contact Intelligence Unit</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Name / Institution" required>
+                <input type="email" placeholder="Corporate Email" required>
+                <textarea rows="5" placeholder="Inquiry details..." required></textarea>
+                <button type="button" onclick="alert('Message Sent (Demo)')">Send Inquiry</button>
+            </form>
+            <p style="color:var(--gold); font-size:20px; font-weight:900; margin-top:20px;">contact@cryptofinancialtimes.online</p>
+        </div>
+    </div>
 </div>
+
+<div id="cookie-banner">
+    <span style="font-size:12px;">Institutional-grade cookies active for terminal analytics.</span>
+    <button class="cookie-btn" onclick="document.getElementById('cookie-banner').style.display='none'">Accept</button>
+</div>
+
+<button id="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
 
 <footer><p>© 2026 CRYPTO FINANCIAL TIMES | Institutional Digital Intelligence</p></footer>
 
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 const articles = [
-    {tag:"Institutional", title:"BlackRock IBIT Inflows", sum:"Bitcoin ETFs redefine portfolio allocation in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"BlackRock's IBIT has seen unprecedented inflows, signaling a shift in global asset management."},
-    {tag:"Banking", title:"JPM Coin Volume Surge", sum:"JPMorgan settlements over $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"JPM Coin handles massive daily volumes, reducing settlement times to seconds."},
-    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows from Tech stocks into digital assets.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"Analysts report a major shift toward digital scarcity as an inflation hedge."},
-    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New standards provide clarity for global custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"Banks can now custody digital assets under new federal guidelines."},
-    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents executing complex smart contracts.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"DeFi TVL hits record highs thanks to AI-driven yield optimization."},
-    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"Decentralization peaks as node hardware requirements drop by 90%."},
-    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"The network achieves extreme scale while maintaining full decentralization."},
-    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"Corporations bypass intermediate banks for instant international trade."},
-    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"Bitcoin mining operations stabilize renewable grids worldwide."},
-    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"Financial privacy meets regulatory compliance through ZK technology."},
-    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"The EU becomes the premier hub for digital asset innovation."},
-    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"Institutional-grade security now fits in the palm of your hand."},
-    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership of global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"On-chain fragmentation increases property liquidity by 10x."},
-    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"Seamless asset moves between Layer 2 networks unify liquidity."},
-    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"Blockchains secure their systems against future quantum attacks."}
+    {tag:"Institutional", title:"BlackRock IBIT Inflows", sum:"Bitcoin ETFs redefine portfolio allocation in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"Institutional demand remains at record highs, leading to massive capital absorption."},
+    {tag:"Banking", title:"JPM Coin Volume Surge", sum:"JPMorgan settlements over $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"The banking sector is fully integrating private ledger solutions for liquidity."},
+    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows from Tech stocks into digital assets.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"Digital scarcity is becoming the primary hedge against global fiat inflation."},
+    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New standards provide clarity for global custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"Federal guidelines now support full banking custody for digital assets."},
+    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents executing complex smart contracts.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"Yield optimization is now fully managed by high-frequency AI algorithms."},
+    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"The network has achieved maximum decentralization with minimal hardware requirements."},
+    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"The new validator client solves scaling bottlenecks for global trading platforms."},
+    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"Cross-border trade is moving to T+0 settlement cycles using stable assets."},
+    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"Mining operations are now essential for stabilizing renewable power grids."},
+    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"Privacy and compliance coexist through advanced cryptographic proofs."},
+    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"The EU regulatory framework attracts global capital to its fintech hubs."},
+    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"Cold storage security is now natively integrated into high-end mobile devices."},
+    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership of global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"On-chain assets increase real estate liquidity for institutional investors."},
+    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"Seamless asset movement between networks has unified global liquidity pools."},
+    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"Next-generation cryptography secures assets against future compute threats."}
 ];
 
 function loadNews() {
     const container = document.getElementById('news-container');
+    const skeleton = document.getElementById('skeleton-load');
     container.innerHTML = articles.map(a => `
         <div class="card">
             <div class="news-thumb" style="background-image:url('${a.img}?auto=format&fit=crop&w=800')"></div>
@@ -164,6 +174,7 @@ function loadNews() {
             </div>
         </div>
     `).join('');
+    setTimeout(() => { skeleton.style.display = 'none'; container.style.display = 'grid'; }, 1000);
 }
 
 function showSection(id) {
@@ -178,9 +189,13 @@ function toggleText(btn) {
     btn.innerHTML = (text.style.display === "block") ? "Close -" : "Analysis +";
 }
 
+window.onscroll = function() {
+    document.getElementById('back-top').style.display = (window.scrollY > 500) ? "block" : "none";
+};
+
 window.onload = function() {
     loadNews();
-    new TradingView.widget({ "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "timezone": "Etc/UTC", "theme": "dark", "style": "1", "locale": "en", "container_id": "tv_main_chart" });
+    new TradingView.widget({ "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "theme": "dark", "style": "1", "container_id": "tv_main_chart" });
 };
 </script>
 </body>
