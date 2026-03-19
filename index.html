@@ -7,15 +7,11 @@
     <link href="https://cdn-icons-png.flaticon.com/512/1490/1490849.png" rel="icon" type="image/png"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
     
-    <meta name="description" content="Digital asset intelligence terminal for institutional investors. In-depth analysis, real-time market data, and global coverage of Bitcoin, Ethereum, and DeFi."/>
-    
     <style>
         :root { --gold: #f59e0b; --card-bg: #161c2d; --text-muted: #94a3b8; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: #0b0f1a; color: #fff; overflow-x: hidden; }
         
-        /* TICKER */
         .ticker-wrapper { background: #000; border-bottom: 1px solid #1e293b; height: 46px; overflow: hidden; }
-        
         header { background: #000; padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); background-image: radial-gradient(circle at center, #1e293b 0%, #000 100%); }
         header h1 { font-size: 2.8rem; margin: 0; color: var(--gold); font-weight: 900; letter-spacing: -1px; }
         header p { color: var(--text-muted); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-top: 10px; }
@@ -26,7 +22,6 @@
         .container { max-width: 1400px; margin: 30px auto; padding: 0 15px; min-height: 70vh; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         
-        /* CARDS */
         .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2d3748; display: flex; flex-direction: column; transition: 0.3s; height: 100%; }
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .news-thumb { width: 100%; height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid #2d3748; }
@@ -37,24 +32,27 @@
         .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.7; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: left; }
         
         .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; text-align: center; }
+        .update-timestamp { text-align: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; padding: 20px; border-top: 1px solid #1e293b; }
 
-        .update-timestamp { text-align: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; padding: 20px; border-top: 1px shadow #1e293b; }
-
-        /* LEGAL & CONTACT */
         .legal-box { background: var(--card-bg); padding: 40px 20px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; max-width: 800px; margin: 0 auto; text-align: center; }
-        .contact-card { background: #0b0f1a; border: 1px solid var(--gold); padding: 25px 15px; border-radius: 12px; margin-top: 25px; overflow: hidden; }
-        .contact-email { color: var(--gold); font-size: 18px; font-weight: 900; text-decoration: none; display: block; word-wrap: break-word; overflow-wrap: anywhere; line-height: 1.4; }
-
-        /* TERMINAL */
         .market-terminal { background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 15px; }
-        .terminal-grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
-        @media (max-width: 1000px) { .terminal-grid { grid-template-columns: 1fr; } }
+
+        footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #1e293b; margin-top: 40px; font-size: 12px; color: var(--text-muted); padding-bottom: 120px; }
+        #back-top { position: fixed; bottom: 120px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
         
-        footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #1e293b; margin-top: 40px; font-size: 12px; color: var(--text-muted); }
-        #back-top { position: fixed; bottom: 20px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
-        
-        #cookie-banner { position: fixed; bottom: 0; width: 100%; background: #000; color: white; padding: 15px; text-align: center; border-top: 2px solid var(--gold); z-index: 9999; font-size: 13px; }
-        #cookie-banner button { background: var(--gold); border: none; padding: 5px 15px; margin-left: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        /* BANNER DE COOKIES PERSISTENTE ABAJO */
+        #cookie-banner { 
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            background: #000; color: #fff; padding: 25px 15px; 
+            text-align: center; border-top: 3px solid var(--gold); 
+            z-index: 999999; font-size: 13px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,1);
+            display: none;
+        }
+        .inner-banner { max-width: 1000px; margin: 0 auto; }
+        .cookie-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 15px; }
+        .btn-accept { background: var(--gold); color: #000; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 900; text-transform: uppercase; }
+        .btn-reject { background: transparent; color: #fff; border: 1px solid #555; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; font-size: 11px; }
 
         .page-section { display: none; }
         .active { display: block !important; }
@@ -98,27 +96,14 @@
 
     <div class="page-section" id="markets">
         <div class="market-terminal">
-            <div class="terminal-grid">
-                <div>
-                    <div id="tv_main_chart" style="height: 500px; margin-bottom:20px;"></div>
-                    <div style="height: 400px;">
-                        <script async src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js">{ "width": "100%", "height": "100%", "screener_type": "crypto_mkt", "colorTheme": "dark", "isTransparent": true }</script>
-                    </div>
-                </div>
-                <div style="display:flex; flex-direction:column; gap:20px;">
-                    <script async src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "height": "350", "colorTheme": "dark", "isTransparent": true }</script>
-                    <script async src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js">{ "symbol": "BINANCE:BTCUSDT", "width": "100%", "colorTheme": "dark", "isTransparent": true }</script>
-                </div>
-            </div>
+            <div id="tv_main_chart" style="height: 600px;"></div>
         </div>
     </div>
 
     <div class="page-section" id="privacy">
         <div class="legal-box" style="text-align: left;">
             <h2>Privacy Policy</h2>
-            <p><strong>Effective Date: March 18, 2026</strong></p>
-            <p>At Crypto Financial Times, we prioritize your privacy. We use log files and standard procedures to collect non-personal data.</p>
-            <p><strong>Cookies and Google AdSense:</strong> Google, as a third-party vendor, uses cookies to serve ads. Google's use of the DART cookie enables it to serve ads based on visits to this and other sites. You may opt out at the Google ad and content network privacy policy.</p>
+            <p>At Crypto Financial Times, we prioritize your privacy. We use cookies to analyze traffic and personalize your experience through Google AdSense. By using our terminal, you agree to our use of tracking technologies for advertising purposes.</p>
             <p>Contact: <strong>cryptofinancialtimes@gmail.com</strong></p>
         </div>
     </div>
@@ -126,32 +111,30 @@
     <div class="page-section" id="terms">
         <div class="legal-box">
             <h2>Terms of Service</h2>
-            <p>Content provided is for informational purposes only. Digital assets involve high risk. Crypto Financial Times is not responsible for financial losses based on market volatility.</p>
+            <p>Content provided is for informational purposes only. Digital assets involve high risk. We are not financial advisors.</p>
         </div>
     </div>
 
     <div class="page-section" id="contact">
         <div class="legal-box">
-            <div style="font-size: 40px; margin-bottom: 10px;">✉️</div>
-            <h2>Institutional Support</h2>
-            <p style="font-size: 14px;">For editorial inquiries or technical support:</p>
-            <div class="contact-card">
-                <p style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;">Official Email</p>
-                <a href="mailto:cryptofinancialtimes@gmail.com" class="contact-email">
-                    cryptofinancialtimes@gmail.com
-                </a>
-            </div>
+            <h2>Contact</h2>
+            <p>Institutional queries: <strong>cryptofinancialtimes@gmail.com</strong></p>
         </div>
     </div>
 </div>
 
 <div id="cookie-banner">
-    This website uses cookies to ensure you get the best experience on our terminal. 
-    <button onclick="acceptCookies()">Accept</button>
+    <div class="inner-banner">
+        <strong>Cookie & Privacy Consent</strong>
+        <p style="margin: 10px 0; color: #ccc;">We use cookies to analyze our traffic and personalize ads via Google AdSense. Please choose your preference.</p>
+        <div class="cookie-buttons">
+            <button class="btn-reject" onclick="acceptCookies()">Reject Non-Essential</button>
+            <button class="btn-accept" onclick="acceptCookies()">Accept All Cookies</button>
+        </div>
+    </div>
 </div>
 
 <button id="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
-
 <footer><p>© 2026 CRYPTO FINANCIAL TIMES | Institutional Digital Intelligence</p></footer>
 
 <script src="https://s3.tradingview.com/tv.js"></script>
@@ -296,7 +279,7 @@ function toggleText(btn) {
 
 function acceptCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'true');
+    localStorage.setItem('cft_v_final_2026_ok', 'true');
 }
 
 window.onscroll = function() {
@@ -305,7 +288,9 @@ window.onscroll = function() {
 
 window.onload = function() {
     loadNews();
-    if(localStorage.getItem('cookiesAccepted')) { document.getElementById('cookie-banner').style.display = 'none'; }
+    if(!localStorage.getItem('cft_v_final_2026_ok')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+    }
     new TradingView.widget({ "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "theme": "dark", "container_id": "tv_main_chart" });
 };
 </script>
