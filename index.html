@@ -32,11 +32,13 @@
         .news-thumb { width: 100%; height: 200px; background-size: cover; background-position: center; border-bottom: 1px solid #2d3748; }
         .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         .card-tag { color: var(--gold); font-size: 10px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; }
-        .card-title { font-size: 19px; margin: 8px 0; color: #fff; font-weight: 700; line-height: 1.3; }
-        .card-summary { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
-        .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.7; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: justify; }
+        .card-title { font-size: 19px; margin: 8px 0; color: #fff; font-weight: 700; line-height: 1.3; text-align: left; }
+        .card-summary { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; text-align: left; }
+        .card-text { color: #cbd5e1; font-size: 14px; line-height: 1.7; display: none; margin-top: 15px; border-top: 1px solid #334155; padding-top: 15px; text-align: left; }
         
         .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; text-align: center; }
+
+        .update-timestamp { text-align: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; padding: 20px; border-top: 1px shadow #1e293b; }
 
         /* LEGAL & CONTACT */
         .legal-box { background: var(--card-bg); padding: 40px 20px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; max-width: 800px; margin: 0 auto; text-align: center; }
@@ -51,7 +53,6 @@
         footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #1e293b; margin-top: 40px; font-size: 12px; color: var(--text-muted); }
         #back-top { position: fixed; bottom: 20px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
         
-        /* COOKIE BANNER */
         #cookie-banner { position: fixed; bottom: 0; width: 100%; background: #000; color: white; padding: 15px; text-align: center; border-top: 2px solid var(--gold); z-index: 9999; font-size: 13px; }
         #cookie-banner button { background: var(--gold); border: none; padding: 5px 15px; margin-left: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
 
@@ -92,6 +93,7 @@
     <div class="page-section active" id="home">
         <div class="grid" id="skeleton-load"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
         <div class="grid" id="news-container" style="display:none;"></div>
+        <div class="update-timestamp">Terminal Intelligence Feed | Last Updated: March 19, 2026</div>
     </div>
 
     <div class="page-section" id="markets">
@@ -158,7 +160,7 @@ const articles = [
     {
         tag:"Institutional", 
         title:"BlackRock IBIT Inflows Peak", 
-        sum:"Updated March 19, 2026: Bitcoin ETFs redefine portfolio allocation for global wealth managers as cumulative inflows surpass $250B.", 
+        sum:"Bitcoin ETFs redefine portfolio allocation for global wealth managers as cumulative inflows surpass $250B.", 
         img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", 
         text:"<p>Institutional demand has reached full maturity in Q1 2026. With global pension funds from Japan and Scandinavia entering the market via BlackRock's IBIT, Bitcoin is now officially classified as a Tier-1 reserve asset by major central banks. The integration of spot ETFs into standard 60/40 portfolios has created a permanent bid floor, reducing historical volatility and attracting conservative sovereign wealth funds.</p>"
     },
