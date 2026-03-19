@@ -38,7 +38,7 @@
         
         .read-more { color: var(--gold); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase; border: 1px solid var(--gold); padding: 8px; border-radius: 4px; text-align: center; }
 
-        .update-timestamp { text-align: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; padding: 20px; border-top: 1px shadow #1e293b; }
+        .update-timestamp { text-align: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; padding: 20px; border-top: 1px solid #1e293b; }
 
         /* LEGAL & CONTACT */
         .legal-box { background: var(--card-bg); padding: 40px 20px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; max-width: 800px; margin: 0 auto; text-align: center; }
@@ -53,8 +53,16 @@
         footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #1e293b; margin-top: 40px; font-size: 12px; color: var(--text-muted); }
         #back-top { position: fixed; bottom: 20px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
         
-        #cookie-banner { position: fixed; bottom: 0; width: 100%; background: #000; color: white; padding: 15px; text-align: center; border-top: 2px solid var(--gold); z-index: 9999; font-size: 13px; }
-        #cookie-banner button { background: var(--gold); border: none; padding: 5px 15px; margin-left: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        /* BANNER DE COOKIES PERSONALIZADO */
+        #cookie-banner { 
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            background: #000; color: #fff; padding: 25px 15px; 
+            text-align: center; border-top: 3px solid var(--gold); 
+            z-index: 999999; font-size: 13px; display: none;
+        }
+        .cookie-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 15px; }
+        .btn-accept { background: var(--gold); color: #000; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 900; }
+        .btn-reject { background: transparent; color: #fff; border: 1px solid #555; padding: 10px 25px; border-radius: 5px; cursor: pointer; }
 
         .page-section { display: none; }
         .active { display: block !important; }
@@ -146,8 +154,14 @@
 </div>
 
 <div id="cookie-banner">
-    This website uses cookies to ensure you get the best experience on our terminal. 
-    <button onclick="acceptCookies()">Accept</button>
+    <div class="inner-banner">
+        <strong>Cookie & Privacy Consent</strong>
+        <p style="margin: 10px 0; color: #ccc;">We use cookies to analyze traffic and personalize ads via Google AdSense.</p>
+        <div class="cookie-buttons">
+            <button class="btn-reject" onclick="acceptCookies()">Reject</button>
+            <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
+        </div>
+    </div>
 </div>
 
 <button id="back-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
@@ -296,7 +310,7 @@ function toggleText(btn) {
 
 function acceptCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cookiesAccepted', 'true');
+    localStorage.setItem('cft_cookies_2026', 'true');
 }
 
 window.onscroll = function() {
@@ -305,7 +319,9 @@ window.onscroll = function() {
 
 window.onload = function() {
     loadNews();
-    if(localStorage.getItem('cookiesAccepted')) { document.getElementById('cookie-banner').style.display = 'none'; }
+    if(!localStorage.getItem('cft_cookies_2026')) {
+        document.getElementById('cookie-banner').style.display = 'block';
+    }
     new TradingView.widget({ "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "theme": "dark", "container_id": "tv_main_chart" });
 };
 </script>
