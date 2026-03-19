@@ -35,24 +35,22 @@
         .update-timestamp { text-align: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; padding: 20px; border-top: 1px solid #1e293b; }
 
         .legal-box { background: var(--card-bg); padding: 40px 20px; border-radius: 15px; border: 1px solid #2d3748; line-height: 1.8; color: #cbd5e1; max-width: 900px; margin: 0 auto; text-align: center; }
-        .market-terminal { background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 15px; height: 650px; }
+        
+        /* SECCIÓN MERCADOS ORIGINAL */
+        .market-terminal { background: #000; border: 1px solid var(--gold); border-radius: 12px; padding: 15px; }
 
         footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #1e293b; margin-top: 40px; font-size: 12px; color: var(--text-muted); padding-bottom: 120px; }
         #back-top { position: fixed; bottom: 120px; right: 20px; background: #000; color: var(--gold); border: 1px solid var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: none; z-index: 2000; }
         
-        /* BANNER DE COOKIES ADSENSE */
         #cookie-banner { 
             position: fixed; bottom: 0; left: 0; width: 100%; 
             background: #000; color: #fff; padding: 25px 15px; 
             text-align: center; border-top: 3px solid var(--gold); 
-            z-index: 999999; font-size: 13px;
-            box-shadow: 0 -10px 40px rgba(0,0,0,1);
-            display: none;
+            z-index: 999999; font-size: 13px; display: none;
         }
-        .inner-banner { max-width: 1000px; margin: 0 auto; }
         .cookie-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 15px; }
-        .btn-accept { background: var(--gold); color: #000; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 900; text-transform: uppercase; }
-        .btn-reject { background: transparent; color: #fff; border: 1px solid #555; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; font-size: 11px; }
+        .btn-accept { background: var(--gold); color: #000; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 900; }
+        .btn-reject { background: transparent; color: #fff; border: 1px solid #555; padding: 10px 25px; border-radius: 5px; cursor: pointer; }
 
         .page-section { display: none; }
         .active { display: block !important; }
@@ -96,32 +94,29 @@
 
     <div class="page-section" id="markets">
         <div class="market-terminal">
-            <div id="tv_main_chart" style="height: 100%; width: 100%;"></div>
+            <div id="tv_main_chart" style="height: 600px;"></div>
         </div>
     </div>
 
     <div class="page-section" id="privacy">
         <div class="legal-box" style="text-align: left;">
             <h2 style="color:var(--gold)">Privacy Policy</h2>
-            <p>At Crypto Financial Times, we take your data seriously. We use cookies to analyze web traffic and to serve personalized advertisements through Google AdSense. This helps us maintain our high-frequency intelligence reports free of charge for our readers.</p>
-            <p>By using this site, you consent to the processing of data about you by Google in the manner and for the purposes set out above. We do not sell your personal information to third parties.</p>
+            <p>At Crypto Financial Times, we take your data seriously. We use cookies to analyze web traffic and to serve personalized advertisements through Google AdSense.</p>
+            <p>Contact: <strong>cryptofinancialtimes@gmail.com</strong></p>
         </div>
     </div>
 
     <div class="page-section" id="terms">
         <div class="legal-box" style="text-align: left;">
             <h2 style="color:var(--gold)">Terms of Service</h2>
-            <p>The information provided on Crypto Financial Times does not constitute investment advice, financial advice, or trading advice. Our content is for informational and educational purposes only.</p>
-            <p>Cryptocurrency markets are highly volatile. You should conduct your own research and consult with a professional financial advisor before making any investment decisions. Crypto Financial Times will not be held responsible for any financial losses.</p>
+            <p>The information provided on Crypto Financial Times does not constitute investment advice. Our content is for informational purposes only.</p>
         </div>
     </div>
 
     <div class="page-section" id="contact">
         <div class="legal-box">
-            <h2 style="color:var(--gold)">Contact Intelligence Desk</h2>
-            <p>For editorial inquiries, corporate partnerships, or technical support, please contact our terminal desk at:</p>
-            <p style="font-size: 20px; color: #fff; margin-top: 20px;"><strong>cryptofinancialtimes@gmail.com</strong></p>
-            <p style="color: var(--text-muted); margin-top: 30px;">Direct support available 24/7 for institutional partners.</p>
+            <h2 style="color:var(--gold)">Contact</h2>
+            <p>For inquiries: <strong>cryptofinancialtimes@gmail.com</strong></p>
         </div>
     </div>
 </div>
@@ -129,10 +124,10 @@
 <div id="cookie-banner">
     <div class="inner-banner">
         <strong>Cookie & Privacy Consent</strong>
-        <p style="margin: 10px 0; color: #ccc;">We use cookies to analyze traffic and personalize ads via Google AdSense. Please choose your preference to continue.</p>
+        <p style="margin: 10px 0; color: #ccc;">We use cookies to analyze traffic and personalize ads via Google AdSense.</p>
         <div class="cookie-buttons">
-            <button class="btn-reject" onclick="acceptCookies()">Reject Non-Essential</button>
-            <button class="btn-accept" onclick="acceptCookies()">Accept All Cookies</button>
+            <button class="btn-reject" onclick="acceptCookies()">Reject</button>
+            <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
         </div>
     </div>
 </div>
@@ -282,7 +277,7 @@ function toggleText(btn) {
 
 function acceptCookies() {
     document.getElementById('cookie-banner').style.display = 'none';
-    localStorage.setItem('cft_final_v1_2026_ok', 'true');
+    localStorage.setItem('cft_v_final_2026_ok', 'true');
 }
 
 window.onscroll = function() {
@@ -291,7 +286,7 @@ window.onscroll = function() {
 
 window.onload = function() {
     loadNews();
-    if(!localStorage.getItem('cft_final_v1_2026_ok')) {
+    if(!localStorage.getItem('cft_v_final_2026_ok')) {
         document.getElementById('cookie-banner').style.display = 'block';
     }
     new TradingView.widget({ "autosize": true, "symbol": "BINANCE:BTCUSDT", "interval": "D", "theme": "dark", "container_id": "tv_main_chart" });
