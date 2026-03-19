@@ -155,21 +155,111 @@
 <script src="https://s3.tradingview.com/tv.js"></script>
 <script>
 const articles = [
-    {tag:"Institutional", title:"BlackRock IBIT Inflows Peak", sum:"Bitcoin ETFs redefine portfolio allocation for global wealth managers in 2026.", img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", text:"<p>Institutional demand has reached maturity. With global pension funds entering the market via BlackRock's IBIT, Bitcoin is now a Tier-1 reserve asset.</p>"},
-    {tag:"Banking", title:"JPM Coin Daily Volume", sum:"JPMorgan settlements exceed $100B daily on-chain.", img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", text:"<p>Private banking is migrating to blockchain rails. JPM Coin processes record volumes, reducing settlement times from days to seconds.</p>"},
-    {tag:"Economy", title:"The Great Rotation", sum:"Capital flows from tech stocks into digital scarcity.", img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", text:"<p>Investors are shifting from traditional growth stocks to programmed digital scarcity as a hedge against global monetary expansion.</p>"},
-    {tag:"Regulation", title:"SEC Regulatory Pivot", sum:"New standards provide clarity for global custodians.", img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", text:"<p>New frameworks finally allow commercial banks to natively custody digital assets, removing counterparty risks for S&P 500 firms.</p>"},
-    {tag:"AI", title:"AI Agents in DeFi", sum:"Autonomous agents drive TVL to record highs.", img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", text:"<p>AI now manages 60% of DeFi liquidity, optimizing capital across multiple chains instantaneously for maximum yield efficiency.</p>"},
-    {tag:"Ethereum", title:"Ethereum Verge Success", sum:"Statelessness reached, scaling to millions of nodes.", img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", text:"<p>The Verge update allows full nodes to run on smartphones, ensuring total decentralization against centralized state pressures.</p>"},
-    {tag:"Solana", title:"Firedancer Mainnet Live", sum:"Solana hits 1M transactions per second milestone.", img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", text:"<p>Firedancer enables Solana to compete with Nasdaq-level latency, positioning it as the premier layer for high-frequency trading.</p>"},
-    {tag:"Settlement", title:"USDC Global Rail", sum:"Stablecoins replacing legacy SWIFT rails.", img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", text:"<p>USDC has become the global standard for cross-border B2B settlements, reducing transaction costs for logistics by 85%.</p>"},
-    {tag:"Green", title:"Renewable Mining ATH", sum:"90% of the network powered by green energy.", img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", text:"<p>Bitcoin mining is now the primary financier for renewable energy projects, utilizing stranded energy to stabilize power grids.</p>"},
-    {tag:"Privacy", title:"ZK-Proofs Standard", sum:"Zero-Knowledge technology becomes banking standard.", img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", text:"<p>ZK-proofs allow real-time institutional audits without compromising sensitive client data or proprietary market strategies.</p>"},
-    {tag:"Policy", title:"MiCA 2.0 Implementation", sum:"Europe solidifies global lead in crypto regulation.", img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", text:"<p>MiCA 2.0 provides the legal certainty required by large funds to operate across Europe, making the EU a premier fintech hub.</p>"},
-    {tag:"Mobile", title:"Hardware Wallet Mobile", sum:"Smartphone secure enclaves reach cold storage parity.", img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", text:"<p>Military-grade security has reached mobile devices, allowing for institutional-level self-custody with simple biometric access.</p>"},
-    {tag:"RWA", title:"Tokenized Real Estate", sum:"Fractional ownership democratizes global landmarks.", img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", text:"<p>Real estate is now liquid. Investors can own fractions of prime commercial buildings in NYC or London with a single click.</p>"},
-    {tag:"Infrastructure", title:"Rollup Interoperability", sum:"Ethereum L2s reach total integration.", img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", text:"<p>The L2 ecosystem has dissolved its borders. Moving assets between networks is now instant, creating a unified liquidity pool.</p>"},
-    {tag:"Cyber", title:"Quantum Resistance", sum:"Major chains upgrade to PQC standards.", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", text:"<p>Major blockchains have successfully migrated to post-quantum cryptography, securing global assets against future compute threats.</p>"}
+    {
+        tag:"Institutional", 
+        title:"BlackRock IBIT Inflows Peak", 
+        sum:"Updated March 19, 2026: Bitcoin ETFs redefine portfolio allocation for global wealth managers as cumulative inflows surpass $250B.", 
+        img:"https://images.unsplash.com/photo-1518546305927-5a555bb7020d", 
+        text:"<p>Institutional demand has reached full maturity in Q1 2026. With global pension funds from Japan and Scandinavia entering the market via BlackRock's IBIT, Bitcoin is now officially classified as a Tier-1 reserve asset by major central banks. The integration of spot ETFs into standard 60/40 portfolios has created a permanent bid floor, reducing historical volatility and attracting conservative sovereign wealth funds.</p>"
+    },
+    {
+        tag:"Banking", 
+        title:"JPM Coin Daily Volume", 
+        sum:"JPMorgan settlements exceed $100B daily on-chain as legacy banking migrates to real-time blockchain rails.", 
+        img:"https://images.unsplash.com/photo-1551288049-bebda4e38f71", 
+        text:"<p>The global banking infrastructure is undergoing its most significant shift since the 1970s. JPM Coin now processes record volumes, reducing cross-border settlement times from 3 days to less than 2 seconds. This on-chain liquidity layer allows for automated collateral management and instant repo markets, saving institutional clients billions in annual liquidity costs and transaction fees.</p>"
+    },
+    {
+        tag:"Economy", 
+        title:"The Great Rotation", 
+        sum:"Capital flows from traditional tech stocks into digital scarcity as global monetary inflation concerns resurface.", 
+        img:"https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f", 
+        text:"<p>Investors are executing a strategic shift from speculative growth stocks to programmed digital scarcity. As central banks navigate a complex 'higher for longer' rate environment in 2026, the demand for non-sovereign assets has surged. Family offices are now allocating up to 15% of their portfolios to digital commodities, viewing them as a hedge against the continued expansion of global debt-to-GDP ratios.</p>"
+    },
+    {
+        tag:"Regulation", 
+        title:"SEC Regulatory Pivot", 
+        sum:"New clarity for global custodians as the SEC finalizes the 'Digital Asset Framework 2.0'.", 
+        img:"https://images.unsplash.com/photo-1639762681485-074b7f938ba0", 
+        text:"<p>A new regulatory era has begun. The SEC's final 2026 framework provides the legal certainty required by Wall Street's largest custodians. This pivot allows commercial banks to natively hold and settle digital assets, effectively removing counterparty risks for S&P 500 firms. The transition from 'regulation by enforcement' to clear statutory rules has unlocked billions in institutional capital that was previously sidelined.</p>"
+    },
+    {
+        tag:"AI", 
+        title:"AI Agents in DeFi", 
+        sum:"Autonomous agents drive DeFi Total Value Locked (TVL) to record highs through predictive liquidity management.", 
+        img:"https://images.unsplash.com/photo-1677442136019-21780ecad995", 
+        text:"<p>Artificial Intelligence has become the primary driver of DeFi efficiency. AI-driven autonomous agents now manage approximately 65% of the total liquidity across major protocols, optimizing yield and capital efficiency across multiple chains instantaneously. These agents can predict liquidation events and rebalance portfolios in microseconds, providing a level of stability never before seen in decentralized markets.</p>"
+    },
+    {
+        tag:"Ethereum", 
+        title:"Ethereum Verge Success", 
+        sum:"Statelessness reached through The Verge update, enabling mobile-based node validation globally.", 
+        img:"https://images.unsplash.com/photo-1621761191319-c6fb62004040", 
+        text:"<p>The successful implementation of 'The Verge' has fundamentally changed Ethereum's decentralization profile. By achieving statelessness through Verkle trees, full node validation can now be performed on standard smartphones. This update ensures total network resilience against centralized state pressures and significantly lowers the barrier to entry for solo stakers, further securing the network's consensus layer.</p>"
+    },
+    {
+        tag:"Solana", 
+        title:"Firedancer Mainnet Live", 
+        sum:"Solana achieves 1M transactions per second milestone, challenging traditional exchange infrastructures.", 
+        img:"https://images.unsplash.com/photo-1642104704074-907c0698cbd9", 
+        text:"<p>The Firedancer validator client has propelled Solana into a new performance tier. By reaching 1 million TPS in a live environment, the network now competes directly with Nasdaq-level latency and throughput. This technological leap has positioned Solana as the premier execution layer for high-frequency trading and large-scale consumer applications that require near-instant finality at negligible costs.</p>"
+    },
+    {
+        tag:"Settlement", 
+        title:"USDC Global Rail", 
+        sum:"Stablecoins are officially replacing legacy SWIFT rails for cross-border B2B transactions.", 
+        img:"https://images.unsplash.com/photo-1559526324-4b87b5e36e44", 
+        text:"<p>USDC has emerged as the global standard for digital dollar settlements. Multinational corporations are increasingly bypassing traditional correspondent banking networks in favor of blockchain-based rails. This shift has reduced international transaction costs for the logistics and manufacturing sectors by over 85%, providing a transparent and 24/7 alternative to the aging SWIFT system.</p>"
+    },
+    {
+        tag:"Green", 
+        title:"Renewable Mining ATH", 
+        sum:"92% of the Bitcoin network is now powered by renewable or stranded energy sources.", 
+        img:"https://images.unsplash.com/photo-1516245834210-c4c142787335", 
+        text:"<p>Bitcoin mining has transitioned into a primary financier for green energy infrastructure. By utilizing stranded methane and excess renewable energy during off-peak hours, miners have become essential partners for national power grids. In 2026, the industry has achieved a negative carbon footprint in several regions, proving that digital asset security can drive global sustainability goals.</p>"
+    },
+    {
+        tag:"Privacy", 
+        title:"ZK-Proofs Standard", 
+        sum:"Zero-Knowledge technology becomes the universal standard for institutional privacy in finance.", 
+        img:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b", 
+        text:"<p>Zero-Knowledge proofs (ZK-proofs) have solved the tension between transparency and privacy. Institutional audits are now conducted in real-time without compromising sensitive client data or proprietary market strategies. This technology allows banks to prove solvency and compliance without revealing individual account balances, marking a new era of 'Trustless Compliance' for global finance.</p>"
+    },
+    {
+        tag:"Policy", 
+        title:"MiCA 2.0 Implementation", 
+        sum:"Europe solidifies its global lead in digital asset regulation with the new MiCA 2.0 framework.", 
+        img:"https://images.unsplash.com/photo-1526304640581-d334cdbbf45e", 
+        text:"<p>The European Union has finalized MiCA 2.0, providing the most comprehensive legal framework for digital assets in the world. This certainty has attracted over 400 new fintech startups to hubs like Madrid, Berlin, and Paris in 2026. The regulation balances consumer protection with institutional innovation, making the Eurozone a premier destination for digital liquidity and capital markets.</p>"
+    },
+    {
+        tag:"Mobile", 
+        title:"Hardware Wallet Mobile", 
+        sum:"Smartphone secure enclaves reach cold storage parity, revolutionizing self-custody for everyone.", 
+        img:"https://images.unsplash.com/photo-1512428559087-560fa5ceab42", 
+        text:"<p>Military-grade security has officially arrived on consumer mobile devices. The latest generation of secure enclaves allows users to hold institutional-level private keys with biometric-only access, eliminating the need for complex seed phrases. This shift has normalized self-custody for millions of users, removing the 'technical barrier' that previously prevented mass adoption of decentralized finance.</p>"
+    },
+    {
+        tag:"RWA", 
+        title:"Tokenized Real Estate", 
+        sum:"Fractional ownership of prime commercial real estate democratizes global property markets.", 
+        img:"https://images.unsplash.com/photo-1560518883-ce09059eeffa", 
+        text:"<p>Real estate is now a liquid asset class. Through tokenization (RWA), retail and institutional investors can own fractions of prime commercial buildings in New York, London, or Tokyo with a single click. This market, valued at over $5 trillion in 2026, has unlocked capital in previously illiquid sectors, allowing for instant secondary market trading of property shares.</p>"
+    },
+    {
+        tag:"Infrastructure", 
+        title:"Rollup Interoperability", 
+        sum:"Ethereum Layer-2s reach total seamless integration, creating a unified liquidity pool.", 
+        img:"https://images.unsplash.com/photo-1639322537228-f710d846310a", 
+        text:"<p>The borders between Ethereum Layer-2 networks have effectively dissolved. New interoperability protocols allow for the instantaneous transfer of assets across Arbitrum, Optimism, and ZK-Sync without users even knowing which chain they are on. This 'Chain Abstraction' has unified liquidity, creating a seamless user experience that mirrors the simplicity of the traditional internet.</p>"
+    },
+    {
+        tag:"Cyber", 
+        title:"Quantum Resistance", 
+        sum:"Major blockchains successfully upgrade to Post-Quantum Cryptography (PQC) standards.", 
+        img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa", 
+        text:"<p>The threat of quantum computing has been neutralized for major networks. In a coordinated multi-year effort, leading blockchains have migrated to PQC signature schemes. This proactive upgrade ensures that global digital assets remain secure against future compute threats, reinforcing the status of blockchain as the most secure infrastructure for the global financial system's future.</p>"
+    }
 ];
 
 function loadNews() {
