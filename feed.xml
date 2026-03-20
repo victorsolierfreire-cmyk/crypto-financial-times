@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Crypto Financial Times</title>
+  <link>https://cryptofinancialtimes.online/</link>
+  <description>Institutional Digital Intelligence Terminal</description>
+  <language>en</language>
+
+  <item>
+    <title>MiCA 2.0: The End of Regulatory Uncertainty in Europe</title>
+    <link>https://cryptofinancialtimes.online/</link>
+    <description>The European Union's latest framework provides the clarity institutional investors needed.</description>
+    <pubDate>Fri, 20 Mar 2026 09:00:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>Solana Firedancer: Matching Nasdaq's Execution Speed</title>
+    <link>https://cryptofinancialtimes.online/</link>
+    <description>Solana has become the premier choice for high-frequency trading on-chain.</description>
+    <pubDate>Thu, 19 Mar 2026 12:10:00 +0000</pubDate>
+  </item>
+
+  <item>
+    <title>BlackRock IBIT: Analyzing the Shift to Permanent Allocation</title>
+    <link>https://cryptofinancialtimes.online/</link>
+    <description>Institutional portfolio management is undergoing a structural change with Bitcoin ETFs.</description>
+    <pubDate>Thu, 19 Mar 2026 10:00:00 +0000</pubDate>
+  </item>
+</channel>
+</rss>
